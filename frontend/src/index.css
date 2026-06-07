@@ -1,0 +1,394 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/inter";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+:root,
+:root[data-theme="obsidian"] {
+  /* Obsidian Night */
+  --background: #121212;
+  --foreground: #f4f7f5;
+  --card: #171717;
+  --card-foreground: #f4f7f5;
+  --popover: #171717;
+  --popover-foreground: #f4f7f5;
+  --primary: #10b981;
+  --primary-foreground: #07130f;
+  --secondary: #1d2522;
+  --secondary-foreground: #f4f7f5;
+  --muted: #181d1b;
+  --muted-foreground: #9aa7a1;
+  --accent: #16352c;
+  --accent-foreground: #d6fff2;
+  --destructive: #ef4444;
+  --border: #2b312e;
+  --input: #232826;
+  --ring: #34d399;
+  --chart-1: #10b981;
+  --chart-2: #34d399;
+  --chart-3: #22c55e;
+  --chart-4: #6ee7b7;
+  --chart-5: #a7f3d0;
+  --radius: 0.875rem;
+  --sidebar: #151515;
+  --sidebar-foreground: #f4f7f5;
+  --sidebar-primary: #10b981;
+  --sidebar-primary-foreground: #07130f;
+  --sidebar-accent: #1b211f;
+  --sidebar-accent-foreground: #f4f7f5;
+  --sidebar-border: #2b312e;
+  --sidebar-ring: #34d399;
+  --canvas-glow:
+    radial-gradient(circle at top, rgba(16, 185, 129, 0.18), transparent 34%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.12), transparent 28%);
+  --surface-glass: rgba(23, 23, 23, 0.72);
+  --surface-glass-strong: rgba(17, 17, 17, 0.92);
+  --surface-border: rgba(255, 255, 255, 0.08);
+  --active-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+:root[data-theme="forest"] {
+  /* Forest Proxy */
+  --background: #111714;
+  --foreground: #f1f7f3;
+  --card: #16201a;
+  --card-foreground: #f1f7f3;
+  --popover: #16201a;
+  --popover-foreground: #f1f7f3;
+  --primary: #22c55e;
+  --primary-foreground: #07130f;
+  --secondary: #1b2721;
+  --secondary-foreground: #f1f7f3;
+  --muted: #18231e;
+  --muted-foreground: #95a89f;
+  --accent: #153326;
+  --accent-foreground: #e3fff1;
+  --destructive: #f87171;
+  --border: #28352e;
+  --input: #222c27;
+  --ring: #4ade80;
+  --chart-1: #22c55e;
+  --chart-2: #34d399;
+  --chart-3: #16a34a;
+  --chart-4: #6ee7b7;
+  --chart-5: #bbf7d0;
+  --sidebar: #132017;
+  --sidebar-foreground: #f1f7f3;
+  --sidebar-primary: #22c55e;
+  --sidebar-primary-foreground: #07130f;
+  --sidebar-accent: #18261f;
+  --sidebar-accent-foreground: #f1f7f3;
+  --sidebar-border: #28352e;
+  --sidebar-ring: #4ade80;
+  --canvas-glow:
+    radial-gradient(circle at top, rgba(34, 197, 94, 0.18), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(20, 184, 166, 0.1), transparent 30%);
+  --surface-glass: rgba(22, 32, 26, 0.72);
+  --surface-glass-strong: rgba(12, 19, 15, 0.94);
+  --surface-border: rgba(148, 163, 184, 0.12);
+  --active-gradient: linear-gradient(135deg, #22c55e 0%, #10b981 100%);
+}
+
+:root[data-theme="light"] {
+  /* Velo Light */
+  --background: #f6f7f5;
+  --foreground: #0f1720;
+  --card: #ffffff;
+  --card-foreground: #0f1720;
+  --popover: #ffffff;
+  --popover-foreground: #0f1720;
+  --primary: #0f9f6e;
+  --primary-foreground: #ffffff;
+  --secondary: #e7eeea;
+  --secondary-foreground: #0f1720;
+  --muted: #edf2ef;
+  --muted-foreground: #5f7068;
+  --accent: #dff5eb;
+  --accent-foreground: #0b5f45;
+  --destructive: #dc2626;
+  --border: #d8e2dc;
+  --input: #d8e2dc;
+  --ring: #10b981;
+  --chart-1: #10b981;
+  --chart-2: #22c55e;
+  --chart-3: #059669;
+  --chart-4: #6ee7b7;
+  --chart-5: #a7f3d0;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0f1720;
+  --sidebar-primary: #0f9f6e;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #edf2ef;
+  --sidebar-accent-foreground: #0f1720;
+  --sidebar-border: #d8e2dc;
+  --sidebar-ring: #10b981;
+  --canvas-glow:
+    radial-gradient(circle at top, rgba(16, 185, 129, 0.08), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(34, 197, 94, 0.08), transparent 28%);
+  --surface-glass: rgba(255, 255, 255, 0.76);
+  --surface-glass-strong: rgba(255, 255, 255, 0.96);
+  --surface-border: rgba(15, 23, 32, 0.08);
+  --active-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+@theme inline {
+  --font-sans: 'Inter Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html, body, #root {
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  html[data-theme="light"] {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* respect iOS safe-area (notch / home indicator) */
+    padding-bottom: env(safe-area-inset-bottom);
+    background-image: var(--canvas-glow);
+    background-attachment: fixed;
+    background-color: var(--background);
+  }
+
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ── thin scrollbar utility ─────────────────────────────────────────────── */
+.thin-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+.thin-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+.thin-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.thin-scrollbar::-webkit-scrollbar-thumb {
+  background-color: var(--border);
+  border-radius: 9999px;
+}
+
+/* ── highlight animation for jump-to-message ────────────────────────────── */
+@keyframes highlight-pulse {
+  0%   { box-shadow: 0 0 0 0px  color-mix(in oklch, var(--primary) 0%,  transparent); }
+  25%  { box-shadow: 0 0 0 2px  color-mix(in oklch, var(--primary) 50%, transparent); }
+  75%  { box-shadow: 0 0 0 2px  color-mix(in oklch, var(--primary) 50%, transparent); }
+  100% { box-shadow: 0 0 0 0px  color-mix(in oklch, var(--primary) 0%,  transparent); }
+}
+.animate-highlight {
+  animation: highlight-pulse 2s ease-in-out forwards;
+}
+
+/* ── premium ambient background for the landing page ───────────────────── */
+@keyframes ambient-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  25% {
+    transform: translate3d(2%, -3%, 0) scale(1.05);
+  }
+  50% {
+    transform: translate3d(-3%, 2%, 0) scale(1.1);
+  }
+  75% {
+    transform: translate3d(3%, 4%, 0) scale(1.04);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.32;
+    filter: blur(76px) saturate(145%);
+  }
+  50% {
+    opacity: 0.64;
+    filter: blur(96px) saturate(185%);
+  }
+}
+
+@keyframes halo-flicker {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.34;
+  }
+}
+
+.ambient-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  isolation: isolate;
+}
+
+.ambient-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(16, 185, 129, 0.18), transparent 22%),
+    radial-gradient(circle at 50% 48%, rgba(5, 150, 105, 0.12), transparent 38%),
+    radial-gradient(circle at 50% 78%, rgba(16, 185, 129, 0.08), transparent 26%),
+    linear-gradient(to bottom, rgba(18, 18, 18, 0.02), rgba(18, 18, 18, 0.56));
+}
+
+.ambient-cloud {
+  position: absolute;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle, rgba(16, 185, 129, 0.56) 0%, rgba(5, 150, 105, 0.28) 26%, transparent 74%);
+  mix-blend-mode: screen;
+  will-change: transform, opacity, filter;
+  animation:
+    ambient-drift 20s ease-in-out infinite,
+    pulse-glow 9s ease-in-out infinite;
+}
+
+.ambient-cloud--hero {
+  width: 60rem;
+  height: 60rem;
+  left: 50%;
+  top: -2%;
+  transform: translateX(-50%);
+  opacity: 0.9;
+}
+
+.ambient-cloud--left {
+  width: 38rem;
+  height: 38rem;
+  left: -10rem;
+  top: 42%;
+  animation-duration: 24s, 10s;
+  opacity: 0.8;
+}
+
+.ambient-cloud--right {
+  width: 40rem;
+  height: 40rem;
+  right: -12rem;
+  bottom: -10rem;
+  animation-duration: 26s, 11s;
+  opacity: 0.72;
+}
+
+.ambient-cloud--center {
+  width: 34rem;
+  height: 34rem;
+  left: 50%;
+  top: 28%;
+  transform: translateX(-50%);
+  animation-duration: 18s, 8s;
+  opacity: 0.82;
+}
+
+.ambient-cloud--lower {
+  width: 44rem;
+  height: 44rem;
+  left: 50%;
+  bottom: -18rem;
+  transform: translateX(-50%);
+  animation-duration: 28s, 12s;
+  opacity: 0.62;
+}
+
+.ambient-beam {
+  position: absolute;
+  left: 50%;
+  top: 8%;
+  width: min(72rem, 92vw);
+  height: 22rem;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent 0%, rgba(16, 185, 129, 0.12) 18%, rgba(16, 185, 129, 0.22) 50%, rgba(16, 185, 129, 0.12) 82%, transparent 100%);
+  filter: blur(52px);
+  opacity: 0.9;
+  animation:
+    ambient-drift 28s ease-in-out infinite,
+    pulse-glow 12s ease-in-out infinite;
+}
+
+.ambient-orb {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(16, 185, 129, 0.16), transparent 18%),
+    radial-gradient(circle at 50% 42%, rgba(5, 150, 105, 0.1), transparent 28%);
+  mix-blend-mode: screen;
+  filter: blur(18px);
+  opacity: 0.75;
+  animation: halo-flicker 10s ease-in-out infinite;
+}
+
+.ambient-noise {
+  position: absolute;
+  inset: -20%;
+  opacity: 0.15;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 40%, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px),
+    radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px);
+  background-size: 7rem 7rem, 9rem 9rem, 11rem 11rem;
+  filter: blur(0.2px);
+  animation: halo-flicker 8s ease-in-out infinite;
+}
