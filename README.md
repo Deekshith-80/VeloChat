@@ -23,6 +23,7 @@ Ensure you have **Docker** and **Docker Compose** installed locally.
 ```bash
 git clone [https://github.com/Deekshith-80/VeloChat.git](https://github.com/Deekshith-80/VeloChat.git)
 cd VeloChat
+```
 
 ## Screen Shots
 <img width="1640" height="845" alt="Home" src="https://github.com/user-attachments/assets/bdf3a657-255d-4fcd-9ae5-02446b4fb039" />
